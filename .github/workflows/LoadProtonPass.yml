@@ -1,4 +1,11 @@
 # Prueba de concepto para leer un secreto de Proton Pass
+# 1) Instalar pass-cli desde PS
+# Invoke-WebRequest -Uri https://proton.me/download/pass-cli/install.ps1 -OutFile install.ps1; .\install.ps1
+# 2) Generar token para la autenticación, que permitirá hacer login en pass-cli sin usuario ni contraseña
+# cmd: pass-cli login | pass-cli pat create --name "gh-actions-poc" --expiration 1w
+# 3) Crear Secret en repository con el nombre 'PROTON_PASS_PAT' y el token devuelto en el paso anterior
+# 3) Listar cajas fuertes
+# pass-cli vault list | pass-cli item list --vault-name "{cajafuerte}" | pass-cli item view --vault-name "{cajafuerte}" --item-title "{propiedad}"
 name: LoadProtonPass
 on:
   workflow_dispatch:
