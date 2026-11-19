@@ -31,7 +31,6 @@ jobs:
           pass-cli item list --vault-name "Personal" || true
           echo "-----------------------------------"
           VALUE="$(pass-cli item view 'pass://Personal/POCvalue/Password')"
-          echo "::add-mask::$VALUE"
           echo "DEMO_SECRET=$VALUE" >> "$GITHUB_ENV"
       - name: Usar el secreto
         run: |
