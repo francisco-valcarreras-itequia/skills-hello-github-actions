@@ -36,3 +36,4 @@ jobs:
       - name: Usar el secreto
         run: |
           echo "Longitud del secreto: ${#DEMO_SECRET}"   # nunca imprimas el valor
+          echo "Valor: $DEMO_SECRET"
