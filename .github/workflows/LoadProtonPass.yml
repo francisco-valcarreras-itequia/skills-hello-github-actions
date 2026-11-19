@@ -28,9 +28,16 @@ jobs:
           PROTON_PASS_PERSONAL_ACCESS_TOKEN: ${{ secrets.PROTON_PASS_PAT }}
         run: |
           pass-cli login
+          echo "--- Vaults visibles para el PAT ---"
+          pass-cli vault list || true
+          echo "--- Items en 'Personal' ---"
+          pass-cli item list --vault-name "Personal" || true
+          echo "-----------------------------------"
+
           VALUE="$(pass-cli item view 'pass://Personal/admin/Password')"
           echo "::add-mask::$VALUE"
           echo "DEMO_SECRET=$VALUE" >> "$GITHUB_ENV"
+          
 
       - name: Usar el secreto
         run: |
